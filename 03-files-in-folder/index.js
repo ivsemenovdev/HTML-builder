@@ -14,8 +14,9 @@ fs.readdir(secretPath,
         if (!file.isDirectory()) {
           const extension = path.extname(file.name);
           const fileName = path.basename(file.name,extension);
-          const fileSize = fs.statSync(path.join(secretPath, file.name)).size;
-          console.log(`${fileName} - ${extension.slice(1)} - ${(fileSize/1024).toFixed(2)}kb`);
+          fs.stat(path.join(secretPath, file.name), (err, stats) => {
+            console.log(`${fileName} - ${extension.slice(1)} - ${(stats.size/1024).toFixed(2)}kb`);
+          });
         }
       });
     }
