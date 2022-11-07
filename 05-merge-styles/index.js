@@ -33,6 +33,12 @@ fsPromises.writeFile(
                     .catch(function (error) {
                       console.log(error);
                     });
+                  fsPromises.appendFile(destinationPath, '\n')
+                    .then(function () {
+                    })
+                    .catch(function (error) {
+                      console.log(error);
+                    });
                 });
             }
           });
@@ -44,7 +50,4 @@ fsPromises.writeFile(
   .catch(function (error) {
     console.log(error);
   });
-
-
-
 
